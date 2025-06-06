@@ -92,7 +92,7 @@ $ python3 prune.py --mask_dir --output_dir --keep_keys
 
 
 ## Citing
-If you have used FLAIR in your work, please consider citing our paper
+If you have used FLAIR in your work, please consider citing our paper!
 
 ```bibtex
 @misc{lalgudi2025zeroshotsharktrackingbiometrics,
