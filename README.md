@@ -17,7 +17,7 @@
 
 
 ## Quick start
-You can run the FLAIR pipeline directly in Google Colab for easy setup and visualization: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/conversation-technology-group/FLAIR/blob/main/FLAIR.ipynb)
+You can run the FLAIR pipeline directly in Google Colab for easy setup and visualization: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/conservation-technology-group/FLAIR/blob/main/FLAIR.ipynb)
 
 ## Table of contents
 
