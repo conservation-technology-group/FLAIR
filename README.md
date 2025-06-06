@@ -77,7 +77,7 @@ Parameters should be set in `config.yaml` prior to running
 
 **Additional parameters can be found in config.yaml**
 
-## Step 1: Mask Pruning
+## Step 2: Mask Pruning
 ```bash
 # Perform manual mask pruning to retain correct objects of interest
 $ python3 prune.py --mask_dir --output_dir --keep_keys
@@ -92,4 +92,17 @@ $ python3 prune.py --mask_dir --output_dir --keep_keys
 
 
 ## Citing
-If you have used FLAIR in your work, please consider citing our paper: FILL IN HERE
+If you have used FLAIR in your work, please consider citing our paper
+
+```bibtex
+@article{yourkey2024flair,
+  title={Title of your paper},
+  author={Your Name and Coauthor A and Coauthor B},
+  journal={Journal Name},
+  volume={XX},
+  pages={XX--XX},
+  year={2024},
+  publisher={Publisher},
+  doi={10.1234/your-doi}
+}
+```
