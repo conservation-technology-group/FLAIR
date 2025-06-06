@@ -95,14 +95,13 @@ $ python3 prune.py --mask_dir --output_dir --keep_keys
 If you have used FLAIR in your work, please consider citing our paper
 
 ```bibtex
-@article{yourkey2024flair,
-  title={Title of your paper},
-  author={Your Name and Coauthor A and Coauthor B},
-  journal={Journal Name},
-  volume={XX},
-  pages={XX--XX},
-  year={2024},
-  publisher={Publisher},
-  doi={10.1234/your-doi}
+@misc{lalgudi2025zeroshotsharktrackingbiometrics,
+      title={Zero-shot Shark Tracking and Biometrics from Aerial Imagery}, 
+      author={Chinmay K Lalgudi and Mark E Leone and Jaden V Clark and Sergio Madrigal-Mora and Mario Espinoza},
+      year={2025},
+      eprint={2501.05717},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2501.05717}, 
 }
 ```
