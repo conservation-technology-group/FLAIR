@@ -1,6 +1,5 @@
 # FLAIR: Frame Level ALIgment and tRacking
-FLAIR pipeline from Zero-shot Shark Tracking and Biometrics from Aerial Imagery
-
+We introduce Frame Level ALIgment and tRacking (FLAIR), which leverages the video understanding of Segment Anything Model 2 (SAM2) and the vision-language capabilities of Contrastive Language-Image Pre-training (CLIP). FLAIR takes a drone video as input and outputs segmentation masks of the species of interest across the video. Notably, FLAIR leverages a zero-shot approach, eliminating the need for labeled data, training a new model, or fine-tuning an existing model to generalize to other species. FLAIR readily generalizes to other shark species without additional human effort and can be combined with novel heuristics to automatically extract relevant information including length and tailbeat frequency. FLAIR has significant potential to accelerate aerial imagery analysis workflows, requiring markedly less human effort and expertise than traditional machine learning workflows, while achieving superior accuracy. By reducing the effort required for aerial imagery analysis, FLAIR allows scientists to spend more time interpreting results and deriving insights about marine ecosystems.
 
 <div align="center">
   <img src="./output_example_video.gif" width="49.5%" style="margin:0;padding:0;border:none;">
@@ -12,7 +11,9 @@ FLAIR pipeline from Zero-shot Shark Tracking and Biometrics from Aerial Imagery
 
 
 ## Quick start
-Python notebook to run FLAIR can be run on Google Colab for easy use and visualization
+You can run the FLAIR pipeline directly in Google Colab for easy setup and visualization:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/conversation-technology-group/FLAIR/blob/main/FLAIR.ipynb)
 
 ## Table of contents
 
