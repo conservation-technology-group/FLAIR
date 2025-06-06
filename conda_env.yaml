@@ -1,0 +1,20 @@
+name: FLAIR
+channels:
+  - nvidia
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - pytorch
+  - torchvision
+  - pytorch-cuda=11.8
+  - matplotlib
+  - pillow
+  - tqdm
+  - pyyaml
+  - opencv
+  - gcc_linux-64
+  - gxx_linux-64
+  - pip  # Just the pip binary

@@ -1,0 +1,8 @@
+transformers==4.51.3
+accelerate==1.7.0
+omegaconf==2.3.0
+iopath==0.1.10
+huggingface-hub==0.31.4
+regex==2024.11.6
+portalocker==3.1.1
+git+https://github.com/conversation-technology-group/sam2.git

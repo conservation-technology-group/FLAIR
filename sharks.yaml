@@ -1,0 +1,8 @@
+path: 
+train: '/home/ubuntu/train/images'
+val: '/home/ubuntu/valid/images'
+
+# class names
+names: 
+  0: 'agg'
+  1: 'shark'
