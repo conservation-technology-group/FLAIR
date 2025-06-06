@@ -1,17 +1,17 @@
 # FLAIR: Frame Level ALIgment and tRacking
-- We introduce Frame Level ALIgment and tRacking (FLAIR), which leverages the video understanding of Segment Anything Model 2 (SAM2) and the vision-language capabilities of Contrastive Language-Image Pre-training (CLIP)
-- FLAIR takes a drone video as input and outputs segmentation masks of the species of interest across the video
-- Leverages a *zero-shot* approach, eliminating the need for labeled data, training a new model, or fine-tuning an existing model to generalize to other species
-- Readily generalizes to other shark species without additional human effort
-- Can be combined with novel heuristics to automatically extract relevant information including length and tailbeat frequency
-- FLAIR also requires markedly less human effort and expertise than traditional machine learning workflows, while achieving superior accuracy
-
 <div align="center">
   <img src="./output_example_video.gif" width="49.5%" style="margin:0;padding:0;border:none;">
   <img src="./overlaid_frames_zebra.gif" width="49.5%" style="margin:0;padding:0;border:none;"><br>
   <img src="./output_blacktip.gif" width="49.5%" style="margin:0;padding:0;border:none;">
   <img src="./overlaid_frames_output2.gif" width="49.5%" style="margin:0;padding:0;border:none;">
 </div>
+
+- We introduce Frame Level ALIgment and tRacking (FLAIR), which leverages the video understanding of Segment Anything Model 2 (SAM2) and the vision-language capabilities of Contrastive Language-Image Pre-training (CLIP)
+- FLAIR takes a drone video as input and outputs segmentation masks of the species of interest across the video
+- Leverages a *zero-shot* approach, eliminating the need for labeled data, training a new model, or fine-tuning an existing model to generalize to other species
+- Readily generalizes to other shark species without additional human effort
+- Can be combined with novel heuristics to automatically extract relevant information including length and tailbeat frequency
+- FLAIR also requires markedly less human effort and expertise than traditional machine learning workflows, while achieving superior accuracy
 
 
 
