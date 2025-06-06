@@ -1,0 +1,47 @@
+paths: # Directories for input and output
+  video_dir: ../FLAIR/example_video
+  output_txt: keep_boxes_example_video.txt
+  output_dir_prefix: video_segments_example_video
+  output_pdf_path: all_masks_example_video.pdf
+
+sam2:
+  model_cfg: sam2_hiera_l.yaml
+  checkpoint: checkpoints/sam2_hiera_large.pt
+  device: auto
+  vos_optimized: true
+
+mask_generator: # SAM2 parameters
+  points_per_side: 32
+  points_per_batch: 32
+  pred_iou_thresh: 0.7
+  stability_score_thresh: 0.92
+  stability_score_offset: 0.7
+  crop_n_layers: 1
+  box_nms_thresh: 0.3
+  crop_nms_thresh: 0.3
+  crop_n_points_downscale_factor: 2
+  min_mask_region_area: 0
+  use_m2m: false
+
+params:
+  run_every_n_frames: 30 # Run SAM2 Automatic Mask Generation every __ frames
+  min_mask_length: 50 # Minimum mask size (calibrate to your task)
+  max_mask_length: 150 # Maximum mask size (calibrate to your task)
+  bbox_buffer: 25 # Padding around bounding box
+  window_length: 3 # Window length for propagation
+
+clip: # CLIP prompts
+  prompts:
+    - "A drone image of white shape on surface of the ocean"
+    - "A clear zoomed-in drone image of a complete dark nurse shark in the ocean with distinct pectoral fins and tail"
+    - "A drone image of the ocean with no distinct sharks"
+    - "A drone image of a rock under the surface of the ocean with no sharks"
+    - "A drone image of sand in the ocean"
+    - "A drone image of rocks on land"
+  clip_correct: [1] # Indices of the correct prompts from clip_prompts (the prompts for the objects you want to identify)
+  clip_confidence: 0.95 # Confidence threshold for CLIP filtering
+
+
+mask_plotting: # Parameters for visualization of masks before pruning
+  n_per_mask: 9 # Plotting 3x3 images every mask
+  resize_factor: 0.3 # Resizing images to fit page
