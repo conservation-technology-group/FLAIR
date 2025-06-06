@@ -6,6 +6,7 @@
   <img src="./overlaid_frames_output2.gif" width="49.5%" style="margin:0;padding:0;border:none;">
 </div>
 
+
 - We introduce Frame Level ALIgment and tRacking (FLAIR), which leverages the video understanding of Segment Anything Model 2 (SAM2) and the vision-language capabilities of Contrastive Language-Image Pre-training (CLIP)
 - FLAIR takes a drone video as input and outputs segmentation masks of the species of interest across the video
 - Leverages a *zero-shot* approach, eliminating the need for labeled data, training a new model, or fine-tuning an existing model to generalize to other species
