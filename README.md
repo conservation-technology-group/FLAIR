@@ -21,7 +21,7 @@ You can run the FLAIR pipeline directly in Google Colab for easy setup and visua
 
 ## Table of contents
 
-![FLAIR Pipeline](FLAIR_method.png)
+![FLAIR Pipeline](./media/figures/FLAIR_method.png)
 
 - [Installation](#installation)
 - [Step-by-step usage](#step-by-step-usage)
