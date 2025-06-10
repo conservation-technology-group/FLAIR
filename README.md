@@ -1,9 +1,9 @@
 # FLAIR: Frame Level ALIgment and tRacking
 <div align="center">
-  <img src="./output_example_video.gif" width="49.5%" style="margin:0;padding:0;border:none;">
-  <img src="./overlaid_frames_zebra.gif" width="49.5%" style="margin:0;padding:0;border:none;"><br>
-  <img src="./output_blacktip.gif" width="49.5%" style="margin:0;padding:0;border:none;">
-  <img src="./overlaid_frames_output2.gif" width="49.5%" style="margin:0;padding:0;border:none;">
+  <img src="./media/output_example_video.gif" width="49.5%" style="margin:0;padding:0;border:none;">
+  <img src="./media/overlaid_frames_zebra.gif" width="49.5%" style="margin:0;padding:0;border:none;"><br>
+  <img src="./media/output_blacktip.gif" width="49.5%" style="margin:0;padding:0;border:none;">
+  <img src="./media/overlaid_frames_output2.gif" width="49.5%" style="margin:0;padding:0;border:none;">
 </div>
 
 
