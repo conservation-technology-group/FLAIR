@@ -1,5 +1,5 @@
-# Code for plotting predicted vs actual lengths of sharks (Figure 7)
-# creates scatter plot and violin plot. They are combined with the inset images in powerpoint.
+# Code for plotting predicted vs actual lengths of sharks 
+# creates scatter plot and violin plot
 
 import sys
 import os

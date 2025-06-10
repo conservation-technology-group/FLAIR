@@ -1,4 +1,4 @@
-# Code for plotting tailbeat frequency over time from a series of shark masks (Figure 8)
+# Code for plotting tailbeat frequency over time from a series of shark masks
 
 import sys
 import os
@@ -46,7 +46,6 @@ ground_truth_pairs_b = [tuple(row) for row in np.loadtxt("fig_scripts/tbf_result
 
 
 # sliding window for ground truth tailbeats
-# TODO change the name of this function
 def calculate_ground_truth_tailbeats(ground_truth_pairs, start, end, window_size=120, step_size=15, fps=30): 
     expected_tailbeats = []
 
