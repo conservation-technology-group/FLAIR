@@ -1,4 +1,4 @@
-###  Make Figure 6 radar plot in paper
+###  Generate radar plot for paper
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -87,6 +87,6 @@ custom_labels = labels
 plt.legend(custom_lines, custom_labels, loc='upper right', bbox_to_anchor=(1.3, 1.1))
 
 #plt.tight_layout()
-fig.set_size_inches(16, 8)  # Ensure size is set before saving
+fig.set_size_inches(16, 8) 
 
-plt.savefig("RadarPlot.png", dpi=600, bbox_inches='tight')  # Save as PNG with 600 DPI
+plt.savefig("RadarPlot.png", dpi=600, bbox_inches='tight') 

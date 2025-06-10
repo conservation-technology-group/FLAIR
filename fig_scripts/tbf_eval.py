@@ -115,10 +115,7 @@ for i in range(len(dists)):
 
 
 # calculate periods
-tailbeat_periods_frames, tailbeat_periods_seconds, smoothed_dists, refined_crossings, all_extrema = calculate_tailbeat_periods(dists, 
-                                                                                                                               frame_rate, 
-                                                                                                                               prominence_factor=prom)
-
+tailbeat_periods_frames, tailbeat_periods_seconds, smoothed_dists, refined_crossings, all_extrema = calculate_tailbeat_periods(dists, frame_rate, prominence_factor=prom)
 
 ### Plot original and smoothed data, extrema, and refined zero crossings
 plt.figure(figsize=(15, 6))

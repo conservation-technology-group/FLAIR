@@ -50,7 +50,6 @@ file_nums = [int(name.split('.')[0]) for name in img_names]
 results = [calculate_centerline_length(os.path.join(input_directory, name), cv2, np, skeletonize, euclidean) for name in img_names]
 
 # Compare to FLAIR predictions
-
 calc_lengths = []
 
 for out_frame_idx in tqdm(range(start, end), desc="Calculating predicted lengths"):
