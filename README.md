@@ -34,7 +34,7 @@ You can run the FLAIR pipeline directly in Google Colab for easy setup and visua
 ## Installation
 ```bash
 # (1) Download FLAIR from GitHub
-$ git clone https://github.com/conversation-technology-group/FLAIR.git
+$ git clone https://github.com/conservation-technology-group/FLAIR.git
 $ cd FLAIR
 
 # (2) Resolve dependencies
