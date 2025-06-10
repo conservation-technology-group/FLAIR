@@ -40,7 +40,7 @@ $ cd FLAIR
 # (2) Resolve dependencies
 # Necessary packages can be installed using the following environment and requirements files.
 # We strongly recommend using conda to install dependencies.
-$ conda env create -f conda_env.yml
+$ conda env create -f conda_env.yaml
 
 # (3) Activate conda environment
 $ conda activate FLAIR
