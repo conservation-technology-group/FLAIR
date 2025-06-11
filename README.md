@@ -19,12 +19,16 @@
 ## Quick start
 You can run the FLAIR pipeline directly in Google Colab for easy setup and visualization: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/conservation-technology-group/FLAIR/blob/main/FLAIR.ipynb)
 
+For optimal performance, please see [Step-by-step usage](#step-by-step-usage). 
+
+
 ## Table of contents
 
 ![FLAIR Pipeline](./media/figures/FLAIR_method.png)
 
 - [Installation](#installation)
 - [Step-by-step usage](#step-by-step-usage)
+  - [Step 0: Configure parameters](#step-0-configure-parameters)
   - [Step 1: FLAIR](#step-1-flair)
   - [Step 2: Mask Pruning](#step-2-mask-pruning)
 - [Citing](#citing)
@@ -49,17 +53,14 @@ $ conda activate FLAIR
 $ pip install -r requirements.txt
 ```
 
-## Step 1: FLAIR
-```bash
-# Run FLAIR with the following python script - we strongly recommend utilizing a GPU
-$ python3 flair.py
-```
+## Step by step usage
 
-Parameters should be set in `config.yaml` prior to running
+We currently support running FLAIR on CUDA-enabled GPUs (i.e. NVIDIA). Mac MPS support will be coming soon! Running on CPU is not recommended. 
 
----
+### Step 0: Configure parameters
+Set the following parameters in `config.yaml`
 
-### Paths
+#### Paths
 * `video_dir`: Input directory containing individual image frames  
 * `output_txt`: Output directory for predicted bounding boxes  
 * `output_dir_prefix`: Output directory for predicted masks  
@@ -67,7 +68,7 @@ Parameters should be set in `config.yaml` prior to running
 
 ---
 
-### SAM2 Params
+#### SAM2 Params
 * `run_every_n_frames`: Parameter for running FLAIR every __ frames – typically equal to fps (30)  
 * `min_mask_length`: Minimum object size in pixels (50)  
 * `max_mask_length`: Maximum object size in pixels (150)  
@@ -75,14 +76,28 @@ Parameters should be set in `config.yaml` prior to running
 
 ---
 
-### CLIP
+#### CLIP
 * `prompts`: List of CLIP prompts to use  
 * `min_mask_length`: Indices of the correct CLIP prompts  
 
 
 **Additional parameters can be found in config.yaml**
 
-## Step 2: Mask Pruning
+---
+
+### Step 1: FLAIR
+
+Parameters should be set in `config.yaml` prior to running
+
+```bash
+# Run FLAIR with the following python script - we strongly recommend utilizing a GPU
+$ python3 flair.py
+```
+
+---
+
+
+### Step 2: Mask Pruning
 ```bash
 # Perform manual mask pruning to retain correct objects of interest
 $ python3 prune.py --mask_dir --output_dir --keep_keys
@@ -90,7 +105,7 @@ $ python3 prune.py --mask_dir --output_dir --keep_keys
 
 ---
 
-### Paths
+#### Paths
 * `mask_dir`: Input directory containing predicted masks
 * `output_dir`: Output directory containing pruned masks
 * `keep_keys`: List of mask keys to keep - selected after manual review of output_pdf_path (e.g. [1, 2])
