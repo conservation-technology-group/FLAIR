@@ -6,6 +6,7 @@ from collections import defaultdict
 from utils import get_bounding_box, calculate_iou
 import torch
 import torchvision
+from tqdm import tqdm
 
 def run_propagation(
     predictor,
