@@ -90,17 +90,25 @@ Set the following parameters in `config.yaml`
 Parameters should be set in `config.yaml` prior to running
 
 ```bash
-# Run FLAIR with the following python script - we strongly recommend utilizing a GPU
-$ python3 flair.py
+# Run FLAIR with the specified config file (we strongly recommend utilizing a GPU)
+$ python3 flair.py --config config.yaml
 ```
 
 ---
 
 
 ### Step 2: Mask Pruning
+
 ```bash
-# Perform manual mask pruning to retain correct objects of interest
-$ python3 prune.py --mask_dir --output_dir --keep_keys
+# Perform manual mask pruning by keeping or removing specific keys to retain correct objects of interest
+# Exactly one of --keep_keys or --remove_keys must be specified
+$ python3 prune.py --mask_dir --output_dir --keep_keys --remove_keys
+
+# Example: Keep only keys 1 and 2
+python3 prune.py --mask_dir path/to/input --output_dir path/to/output --keep_keys 1 2
+
+# Example: Remove keys 3 and 4
+python3 prune.py --mask_dir path/to/input --output_dir path/to/output --remove_keys 3 4
 ```
 
 ---
@@ -108,7 +116,10 @@ $ python3 prune.py --mask_dir --output_dir --keep_keys
 #### Paths
 * `mask_dir`: Input directory containing predicted masks
 * `output_dir`: Output directory containing pruned masks
-* `keep_keys`: List of mask keys to keep - selected after manual review of output_pdf_path (e.g. [1, 2])
+* `keep_keys`: List of mask keys to keep - selected after manual review of output_pdf_path
+* `remove_keys`: List of mask keys to remove - selected after manual review of output_pdf_path
+
+
 
 
 ## Citing
