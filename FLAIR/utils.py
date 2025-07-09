@@ -35,3 +35,24 @@ def calculate_iou(b1, b2):
     inter = max(0, xB - xA) * max(0, yB - yA)
     union = (b1[2]-b1[0])*(b1[3]-b1[1]) + (b2[2]-b2[0])*(b2[3]-b2[1]) - inter
     return inter / union if union > 0 else 0
+
+def mask_to_polygons(mask):
+    mask = np.squeeze(mask.astype(np.uint8))
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    polygons = []
+    for contour in contours:
+        if len(contour) >= 3:
+            polygon = contour.reshape(-1, 2).tolist()
+            polygons.append(polygon)
+    return polygons
+
+def polygons_to_mask(polygons, image_shape):
+    mask = np.zeros(image_shape[:2], dtype=np.uint8)
+    for polygon in polygons:
+        if len(polygon) >= 3:
+            pts = np.array(polygon, dtype=np.int32)
+            cv2.fillPoly(mask, [pts], 1)
+    return mask.astype(bool)
+
+
+

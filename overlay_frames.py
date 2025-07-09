@@ -73,13 +73,14 @@ for frame_idx in range(min_frame, max_frame+1, 5):
       print(f"Processing frame {frame_idx}")
 
     # Load masks from disk for current frame
-    mask_path = f'video_segments_video2_small_5160-5760/frame_{frame_idx}.npy'
+    mask_path = f'{npy_dir}/frame_{frame_idx}.npy'
     if not os.path.exists(mask_path):
         print(f"Mask for frame {frame_idx} not found.")
         continue
 
     # Load saved segmentation masks for the frame
-    masks = np.load(mask_path, allow_pickle=True).item()
+    mask_polygons = np.load(mask_path, allow_pickle=True).item()
+    masks = {k: polygons_to_mask(v, image.shape[:2]) for k, v in mask_polygons.items()}
 
     frame_path = os.path.join(video_dir, frame_names[frame_idx])
 

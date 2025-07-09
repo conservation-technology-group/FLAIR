@@ -3,10 +3,11 @@ import gc
 import time
 import numpy as np
 from collections import defaultdict
-from utils import get_bounding_box, calculate_iou
+from utils import get_bounding_box, calculate_iou, mask_to_polygons, polygons_to_mask
 import torch
 import torchvision
 from tqdm import tqdm
+import cv2
 
 def run_propagation(
     predictor,
@@ -69,7 +70,8 @@ def run_propagation(
                 mask_add = True
 
                 if os.path.exists(filename):
-                    frame_segments = np.load(filename, allow_pickle=True).item()
+                    frame_segments_poly = np.load(filename, allow_pickle=True).item()
+                    frame_segments = {k: polygons_to_mask(v, image_shape) for k, v in frame_segments_poly.items()}
                     for key in sorted(frame_segments.keys(), key=int):
                         bounding_box = get_bounding_box(frame_segments[key])
                         if bounding_box is not None:
@@ -118,7 +120,8 @@ def run_propagation(
         for index in indices:
             if correct[index]:
                 filename = os.path.join(output_dir, f'frame_{(frame_gap * a) - 1}.npy')
-                frame_segments_old = np.load(filename, allow_pickle=True).item()
+                frame_segments_old_poly = np.load(filename, allow_pickle=True).item()
+                frame_segments_old = {k: polygons_to_mask(v, image_shape) for k, v in frame_segments_old_poly.items()}
                 bounding_box = get_bounding_box(frame_segments_old.get(index + 1))
                 del frame_segments_old
 
@@ -175,7 +178,7 @@ def _propagate(predictor, inference_state, output_dir, start, max_frame, image_s
             )
             for out_frame_idx, out_obj_ids, out_mask_logits in iterator:
                 frame_segments = {
-                    out_obj_id: (out_mask_logits[i] > 0.0).cpu().numpy()
+                    out_obj_id: mask_to_polygons((out_mask_logits[i] > 0.0).cpu().numpy())
                     for i, out_obj_id in enumerate(out_obj_ids)
                 }
                 all_results[out_frame_idx].update(frame_segments)

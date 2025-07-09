@@ -16,7 +16,7 @@ def get_bounding_box(mask):
         return None
     return (np.min(x_indices), np.min(y_indices), np.max(x_indices), np.max(y_indices))
 
-def generate_mask_grid(n_per_mask, resize_factor, mask_dir, video_dir, output_pdf_path):
+def generate_mask_grid(n_per_mask, resize_factor, mask_dir, video_dir, image_shape, output_pdf_path):
     frame_names = [
         p for p in os.listdir(video_dir)
         if os.path.splitext(p)[-1].lower() in [".jpg", ".jpeg"]
@@ -30,10 +30,12 @@ def generate_mask_grid(n_per_mask, resize_factor, mask_dir, video_dir, output_pd
         frame_index = int(fname.split("_")[1].split(".")[0])
         fpath = os.path.join(mask_dir, fname)
         data = np.load(fpath, allow_pickle=True).item()
-        for mask_num, mask in data.items():
+        for mask_num, mask_polygons in data.items():
+            # Convert polygon back to numpy mask for get_bounding_box
+            mask = polygons_to_mask(mask_polygons, (image_shape[0], image_shape[1]))  # You'll need to pass image_shape
             bbox = get_bounding_box(mask)
             if bbox is not None:
-                all_samples[mask_num].append((frame_index, mask, bbox))
+                all_samples[mask_num].append((frame_index, bbox))
         del data
         gc.collect()
 
@@ -42,11 +44,11 @@ def generate_mask_grid(n_per_mask, resize_factor, mask_dir, video_dir, output_pd
             if len(samples) < n_per_mask:
                 continue
             selected = random.sample(samples, n_per_mask)
-            frame_indices = [f for f, _, _ in samples]
+            frame_indices = [f for f, _ in samples]
 
             fig, axes = plt.subplots(3, 3, figsize=(12, 9))
             axes = axes.flatten()
-            for ax, (frame_index, mask, bbox) in zip(axes, selected):
+            for ax, (frame_index, bbox) in zip(axes, selected):
                 img_path = os.path.join(video_dir, frame_names[frame_index])
                 image = Image.open(img_path).convert("RGB")
                 if resize_factor != 1.0:

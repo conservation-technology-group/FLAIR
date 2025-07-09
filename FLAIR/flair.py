@@ -9,6 +9,8 @@ from PIL import Image
 from tqdm import tqdm
 from collections import defaultdict
 #import torchvision
+import argparse
+
 
 from sam_setup import setup_device, load_sam_predictor, load_mask_generator
 from utils import *
@@ -20,7 +22,13 @@ print("Torch is cuda available:", torch.cuda.is_available())
 torch.autocast("cuda", dtype=torch.bfloat16).__enter__()
 
 # Load config
-with open("config.yaml", "r") as f:
+# Parse config file path from command-line
+parser = argparse.ArgumentParser(description="Run FLAIR with a specified config file.")
+parser.add_argument("--config", type=str, required=True, help="Path to YAML config file.")
+args = parser.parse_args()
+
+# Load config
+with open(args.config, "r") as f:
     config = yaml.safe_load(f)
 
 device = setup_device(config["sam2"]["device"])
@@ -39,14 +47,12 @@ frame_names = sorted([
     if os.path.splitext(p)[-1].lower() in [".jpg", ".jpeg"]
 ], key=lambda p: int(os.path.splitext(p)[0]))
 
-images = [
-    np.array(Image.open(os.path.join(video_dir, frame_names[i])).convert("RGB"))
-    for i in range(0, len(frame_names), frame_gap)
-]
+images = [i for i in range(0, len(frame_names), frame_gap)]
 
 # === Mask generation + bounding boxes ===
 all_frames_bboxes = []
 for i, img in enumerate(tqdm(images)):
+    img = np.array(Image.open(os.path.join(video_dir, frame_names[img])).convert("RGB"))
     masks = mask_generator.generate(img)
     masks = keep_masks(masks, config["params"]["min_mask_length"], config["params"]["max_mask_length"])
     boxes = bboxes_from_masks(masks, img.shape, config["params"]["bbox_buffer"])
@@ -112,6 +118,7 @@ generate_mask_grid(
     resize_factor=config["mask_plotting"]["resize_factor"],
     mask_dir=config["paths"]["output_dir_prefix"],
     video_dir=config["paths"]["video_dir"],
+    image_shape=image.shape,
     output_pdf_path=config["paths"]["output_pdf_path"]
 )
 
