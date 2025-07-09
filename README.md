@@ -105,10 +105,10 @@ $ python3 flair.py --config config.yaml
 $ python3 prune.py --mask_dir --output_dir --keep_keys --remove_keys
 
 # Example: Keep only keys 1 and 2
-python3 prune.py --mask_dir path/to/input --output_dir path/to/output --keep_keys 1 2
+$ python3 prune.py --mask_dir path/to/input --output_dir path/to/output --keep_keys 1 2
 
 # Example: Remove keys 3 and 4
-python3 prune.py --mask_dir path/to/input --output_dir path/to/output --remove_keys 3 4
+$ python3 prune.py --mask_dir path/to/input --output_dir path/to/output --remove_keys 3 4
 ```
 
 ---
