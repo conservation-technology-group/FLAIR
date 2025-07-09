@@ -94,7 +94,8 @@ Parameters should be set in `config.yaml` prior to running
 $ python3 flair.py --config config.yaml
 ```
 
-Masks are saved as polygon coordinates to significantly reduce file size and storage requirements.
+Masks are saved as polygon coordinates.
+
 
 ---
 
