@@ -2,6 +2,11 @@
 
 import gc
 import os
+import matplotlib
+import matplotlib.pyplot as plt
+import os
+from PIL import Image
+import numpy as np
 
 def show_mask(mask, ax, obj_id=None, random_color=False):
     if random_color:
@@ -12,6 +17,14 @@ def show_mask(mask, ax, obj_id=None, random_color=False):
     h, w = mask.shape[-2:]
     mask_image = mask.reshape(h, w, 1) * color.reshape(1, 1, -1)
     ax.imshow(mask_image)
+
+def polygons_to_mask(polygons, image_shape):
+    mask = np.zeros(image_shape[:2], dtype=np.uint8)
+    for polygon in polygons:
+        if len(polygon) >= 3:
+            pts = np.array(polygon, dtype=np.int32)
+            cv2.fillPoly(mask, [pts], 1)
+    return mask.astype(bool)
 
 # Directory containing .npy files
 npy_dir = 'video_segments_video2_small_5160-5760'
@@ -24,11 +37,7 @@ frame_numbers = [int(f.split('_')[1].split('.')[0]) for f in npy_files]
 min_frame = min(frame_numbers)
 max_frame = max(frame_numbers)
 
-import matplotlib
-import matplotlib.pyplot as plt
-import os
-from PIL import Image
-import numpy as np
+
 
 video_dir = "sam_dji_video2_small"
 
