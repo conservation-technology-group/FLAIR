@@ -1,5 +1,6 @@
 import numpy as np
 import gc
+import cv2
 
 def keep_masks(all_frames_masks, min_len, max_len):
     keep = [

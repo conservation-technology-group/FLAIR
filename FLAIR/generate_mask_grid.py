@@ -8,6 +8,7 @@ from tqdm import tqdm
 from collections import defaultdict
 from matplotlib.patches import Rectangle
 from matplotlib.backends.backend_pdf import PdfPages
+from utils import mask_to_polygons, polygons_to_mask
 
 def get_bounding_box(mask):
     mask = np.squeeze(mask)

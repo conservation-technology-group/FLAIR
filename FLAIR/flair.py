@@ -64,6 +64,8 @@ keep_boxes = []
 prompts = config["clip"]["prompts"]
 
 for i, (img, bboxes) in enumerate(zip(images, all_frames_bboxes)):
+    img = np.array(Image.open(os.path.join(video_dir, frame_names[img])).convert("RGB"))
+    
     crops = [img[y1:y2+1, x1:x2+1] for x1, y1, x2, y2 in bboxes]
     if not crops: continue
 

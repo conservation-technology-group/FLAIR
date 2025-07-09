@@ -1,5 +1,5 @@
 paths: # Directories for input and output
-  video_dir: ../FLAIR/example_video
+  video_dir: ../../example_video
   output_txt: keep_boxes_example_video.txt
   output_dir_prefix: video_segments_example_video
   output_pdf_path: all_masks_example_video.pdf
@@ -25,8 +25,8 @@ mask_generator: # SAM2 parameters
 
 params:
   run_every_n_frames: 30 # Run SAM2 Automatic Mask Generation every __ frames
-  min_mask_length: 50 # Minimum mask size (calibrate to your task)
-  max_mask_length: 150 # Maximum mask size (calibrate to your task)
+  min_mask_length: 75 # Minimum mask size (calibrate to your task)
+  max_mask_length: 300 # Maximum mask size (calibrate to your task)
   bbox_buffer: 25 # Padding around bounding box
   window_length: 3 # Window length for propagation
 

@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import os
 from PIL import Image
 import numpy as np
+import cv2
 
 def show_mask(mask, ax, obj_id=None, random_color=False):
     if random_color:
